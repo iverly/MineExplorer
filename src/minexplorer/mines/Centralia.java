@@ -28,7 +28,7 @@ public class Centralia extends Mine {
 
     @Override
     public String messageArriver() {
-        return "Hello and welcome to the Centralia minexplorer.mine\n\n" +
-                "Quelle chance ! Encore personne n'a mis les pieds ici. A vous la richesse";
+        return "Hello and welcome to the Centraliamine\n" +
+                "Quelle chance ! Encore personne n'a mis les pieds ici. A vous la richesse !";
     }
 }

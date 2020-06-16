@@ -23,8 +23,8 @@ public class Luisenthal extends Mine {
 
     @Override
     public String messageArriver() {
-        return "Hallo und willkommen in der Loulezhal Mine\n\n" +
-                "Pas de chance, cette minexplorer.mine est déjà bien explorer, vous ne trouverez pas grand chose ...";
+        return "Hallo und willkommen in der Loulezhal Mine\n" +
+                "Pas de chance, cette mine est déjà bien explorer, vous ne trouverez pas grand chose ...";
     }
 
 }
