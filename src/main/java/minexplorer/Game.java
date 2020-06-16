@@ -37,12 +37,12 @@ public class Game {
         System.out.println(
                 "Bienvenue dans MineExplorer,\n" +
                 "Votre but est de devenir le plus riche possible en explorant des mines.\n" +
-                "Chaque mine a un niveau de rareté qui défini votre nombre de choix dans cette derniere.\n\n" +
+                "Chaque mine a un niveau de rareté qui définit votre nombre de choix dans cette dernière..\n\n" +
                 "Voici les prix des différents matériaux du jeu:\n" +
                 new Diamant().getNom() + ": " + new Diamant().getPrix() + " $\n" +
                 new Fer().getNom() + ": " + new Fer().getPrix() + " $\n" +
                 new Pierre().getNom() + ": " + new Pierre().getPrix() + " $\n\n" +
-                "Vous pourrez explorer " + nombreDeTours + " mines en tout ! Alors bonne chance et bon jeu !"
+                "Vous pourrez explorer " + nombreDeTours + " mines en tout ! Alors bonne chance et bon jeu !\n"
         );
 
         // todo: wait for ready
@@ -64,7 +64,7 @@ public class Game {
 
             for (ChoixElement choixElement : mine.getChoixList()) {
                 System.out.println(
-                        "Vous avez le choix entre trois tas de roche. La quelle choissez vous ?\n" +
+                        "Vous avez le choix entre trois tas de roches. Lequel choissez vous ?\n" +
                         "1 = première, 2 = deuxième et 3 = dernière"
                 );
                 int choix = getInputAsInt(1, 3);
