@@ -1,4 +1,4 @@
-package elements;
+package minexplorer.elements;
 
 /**
  * @author iverly on 16/06/2020

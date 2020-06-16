@@ -1,10 +1,9 @@
-package mine.mines;
+package minexplorer.mines;
 
-import elements.ChoixElement;
-import elements.Diamant;
-import elements.Fer;
-import elements.Pierre;
-import mine.Mine;
+import minexplorer.ChoixElement;
+import minexplorer.elements.Diamant;
+import minexplorer.elements.Fer;
+import minexplorer.elements.Pierre;
 
 /**
  * @author iverly on 16/06/2020
@@ -29,7 +28,7 @@ public class Centralia extends Mine {
 
     @Override
     public String messageArriver() {
-        return "Hello and welcome to the Centralia mine\n\n" +
+        return "Hello and welcome to the Centralia minexplorer.mine\n\n" +
                 "Quelle chance ! Encore personne n'a mis les pieds ici. A vous la richesse";
     }
 }

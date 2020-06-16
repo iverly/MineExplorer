@@ -1,6 +1,6 @@
-package mine;
+package minexplorer.mines;
 
-import elements.ChoixElement;
+import minexplorer.ChoixElement;
 
 import java.util.Arrays;
 import java.util.LinkedList;

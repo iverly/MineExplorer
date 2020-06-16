@@ -1,9 +1,8 @@
-package mine.mines;
+package minexplorer.mines;
 
-import elements.ChoixElement;
-import elements.Fer;
-import elements.Pierre;
-import mine.Mine;
+import minexplorer.ChoixElement;
+import minexplorer.elements.Fer;
+import minexplorer.elements.Pierre;
 
 /**
  * @author iverly on 16/06/2020
@@ -25,7 +24,7 @@ public class Luisenthal extends Mine {
     @Override
     public String messageArriver() {
         return "Hallo und willkommen in der Loulezhal Mine\n\n" +
-                "Pas de chance, cette mine est déjà bien explorer, vous ne trouverez pas grand chose ...";
+                "Pas de chance, cette minexplorer.mine est déjà bien explorer, vous ne trouverez pas grand chose ...";
     }
 
 }

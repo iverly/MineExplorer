@@ -1,4 +1,6 @@
-package elements;
+package minexplorer;
+
+import minexplorer.elements.Element;
 
 /**
  * @author iverly on 16/06/2020
