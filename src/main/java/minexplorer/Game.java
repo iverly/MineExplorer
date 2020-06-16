@@ -6,6 +6,8 @@ import minexplorer.elements.Fer;
 import minexplorer.elements.Pierre;
 import minexplorer.mines.Mine;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 
 /**
@@ -42,10 +44,18 @@ public class Game {
                 new Diamant().getNom() + ": " + new Diamant().getPrix() + " $\n" +
                 new Fer().getNom() + ": " + new Fer().getPrix() + " $\n" +
                 new Pierre().getNom() + ": " + new Pierre().getPrix() + " $\n\n" +
-                "Vous pourrez explorer " + nombreDeTours + " mines en tout ! Alors bonne chance et bon jeu !\n"
+                "Vous pourrez explorer " + nombreDeTours + " mines en tout ! Alors bonne chance et bon jeu !\n" +
+                "Avant de commencer, donne moi ton pseudo:"
         );
 
-        // todo: wait for ready
+        String pseudo = getInputAsString();
+        Player player = Main.mongo.playerProvider.findByName(pseudo);
+        if (player == null) {
+            player = new Player(pseudo, 0.0F);
+        } else {
+            System.out.println("Re, ton meilleur score est de: " + round(player.getMoney(), 1) + " $");
+        }
+        System.out.println();
 
         for (int i = 0; i < this.nombreDeTours; i++) {
             Mine[] twoRandomMine = getTwoRandomMine();
@@ -73,7 +83,7 @@ public class Game {
                 else if (choix == 2) found = choixElement.getElement2();
                 else found = choixElement.getElement3();
 
-                money += found.getPrix();
+                money += round(found.getPrix(), 1);
                 System.out.println("Vous avez trouvé: " + found.getNom() + " (+" + found.getPrix() + " $)\n");
             }
 
@@ -81,6 +91,24 @@ public class Game {
                     "Vous avez fini d'explorer cette mine. Vous sortez avec " + money + " $ dans votre poche"
             );
         }
+
+        if (player.getMoney() < money) {
+            System.out.println(
+                    "\nNouveau record !!!\n" +
+                    "Votre ancien record était de " + player.getMoney() + " $\n" +
+                    "Nouveau record: " + money + " $"
+            );
+            player.setMoney(money);
+            Main.mongo.playerProvider.save(player);
+        }
+
+        System.out.println("\nClassement du jeu actuel:");
+        int i = 0;
+        for (Player p : Main.mongo.playerProvider.getClassement()) {
+            i++;
+            System.out.println(i + ": " + p.getName() + " avec " + round(p.getMoney(), 1) + " $");
+        }
+        System.out.println();
 
         System.out.println("Fin du jeu !");
     }
@@ -105,6 +133,18 @@ public class Game {
             }
         } while (res < min || res > max);
         return res;
+    }
+
+    private String getInputAsString() {
+        return scanner.nextLine();
+    }
+
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = BigDecimal.valueOf(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 
 }
